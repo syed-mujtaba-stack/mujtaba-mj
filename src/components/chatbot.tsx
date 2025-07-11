@@ -1,11 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Button } from './ui/button';
-import { MessageSquare, Bot, Send, X, User } from 'lucide-react';
+import { MessageSquare, Bot, Send, X, User, Loader2 } from 'lucide-react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from './ui/card';
 import { Input } from './ui/input';
 import { AnimatePresence, motion } from 'framer-motion';
+import { chat } from '@/ai/flows/chat-flow';
+import { ScrollArea } from './ui/scroll-area';
 
 type Message = {
     sender: 'user' | 'bot';
@@ -18,15 +20,40 @@ export default function Chatbot() {
         { sender: 'bot', text: "Hello! I'm a bot. Ask me anything about Syed." }
     ]);
     const [input, setInput] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+    const scrollAreaRef = useRef<HTMLDivElement>(null);
 
-    const handleSend = () => {
+    const scrollToBottom = () => {
+        if (scrollAreaRef.current) {
+            scrollAreaRef.current.scrollTo({
+                top: scrollAreaRef.current.scrollHeight,
+                behavior: 'smooth',
+            });
+        }
+    };
+
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages]);
+
+    const handleSend = async () => {
         if (input.trim()) {
-            setMessages([...messages, { sender: 'user', text: input }]);
-            // Mock bot response
-            setTimeout(() => {
-                setMessages(prev => [...prev, { sender: 'bot', text: "This is a placeholder response." }]);
-            }, 1000);
+            const userMessage: Message = { sender: 'user', text: input };
+            setMessages(prev => [...prev, userMessage]);
             setInput('');
+            setIsLoading(true);
+
+            try {
+                const result = await chat({ message: input });
+                const botMessage: Message = { sender: 'bot', text: result.response };
+                setMessages(prev => [...prev, botMessage]);
+            } catch (error) {
+                console.error("Error fetching bot response:", error);
+                const errorMessage: Message = { sender: 'bot', text: "Sorry, I'm having trouble connecting. Please try again later." };
+                setMessages(prev => [...prev, errorMessage]);
+            } finally {
+                setIsLoading(false);
+            }
         }
     };
 
@@ -57,26 +84,39 @@ export default function Chatbot() {
                                     <X className="h-4 w-4" />
                                 </Button>
                             </CardHeader>
-                            <CardContent className="flex-1 overflow-y-auto p-4 space-y-4">
-                                {messages.map((msg, index) => (
-                                    <div key={index} className={`flex items-start gap-2 ${msg.sender === 'user' ? 'justify-end' : ''}`}>
-                                        {msg.sender === 'bot' && <Bot className="w-6 h-6 text-primary flex-shrink-0" />}
-                                        <div className={`rounded-lg px-3 py-2 max-w-[80%] ${msg.sender === 'user' ? 'bg-primary text-primary-foreground' : 'bg-secondary'}`}>
-                                            <p className="text-sm">{msg.text}</p>
-                                        </div>
-                                         {msg.sender === 'user' && <User className="w-6 h-6 text-muted-foreground flex-shrink-0" />}
+                            <CardContent className="flex-1 p-0">
+                                <ScrollArea className="h-full" ref={scrollAreaRef}>
+                                    <div className="p-4 space-y-4">
+                                        {messages.map((msg, index) => (
+                                            <div key={index} className={`flex items-start gap-2 ${msg.sender === 'user' ? 'justify-end' : ''}`}>
+                                                {msg.sender === 'bot' && <Bot className="w-6 h-6 text-primary flex-shrink-0" />}
+                                                <div className={`rounded-lg px-3 py-2 max-w-[80%] ${msg.sender === 'user' ? 'bg-primary text-primary-foreground' : 'bg-secondary'}`}>
+                                                    <p className="text-sm">{msg.text}</p>
+                                                </div>
+                                                {msg.sender === 'user' && <User className="w-6 h-6 text-muted-foreground flex-shrink-0" />}
+                                            </div>
+                                        ))}
+                                        {isLoading && (
+                                            <div className="flex items-start gap-2">
+                                                <Bot className="w-6 h-6 text-primary flex-shrink-0" />
+                                                <div className="rounded-lg px-3 py-2 max-w-[80%] bg-secondary">
+                                                   <Loader2 className="w-5 h-5 animate-spin" />
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
-                                ))}
+                                </ScrollArea>
                             </CardContent>
                             <CardFooter>
                                 <div className="flex w-full items-center space-x-2">
                                     <Input
                                         value={input}
                                         onChange={(e) => setInput(e.target.value)}
-                                        onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+                                        onKeyPress={(e) => e.key === 'Enter' && !isLoading && handleSend()}
                                         placeholder="Type a message..."
+                                        disabled={isLoading}
                                     />
-                                    <Button onClick={handleSend}><Send /></Button>
+                                    <Button onClick={handleSend} disabled={isLoading}><Send /></Button>
                                 </div>
                             </CardFooter>
                         </Card>
