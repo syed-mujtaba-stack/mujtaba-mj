@@ -16,6 +16,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'mujtaba-110.vercel.app',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };

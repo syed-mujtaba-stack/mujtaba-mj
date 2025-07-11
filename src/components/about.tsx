@@ -1,12 +1,22 @@
 import { skills, languages } from '@/lib/data';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Phone, Mail, MapPin } from 'lucide-react';
+import Image from 'next/image';
 
 export default function About() {
   return (
     <section id="about" className="w-full">
       <div className="grid gap-10 md:grid-cols-2">
         <div className="space-y-6">
+          <div className="relative w-48 h-48 rounded-full overflow-hidden shadow-lg mx-auto md:mx-0">
+             <Image
+                src="https://mujtaba-110.vercel.app/_next/image?url=%2Fhero.jpg&w=1920&q=75"
+                alt="Syed Mujtaba Abbas Zaidi"
+                layout="fill"
+                objectFit="cover"
+                data-ai-hint="profile picture"
+              />
+          </div>
           <div>
             <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-primary">About Me</h2>
             <p className="mt-4 text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
