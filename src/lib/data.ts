@@ -37,7 +37,7 @@ export const projects: Project[] = [
     image: 'https://placehold.co/600x400.png',
     tags: ['Next.js', 'React', 'OpenRouter API'],
     category: 'Web Development',
-    link: 'https://code-mentor-ai.vercel.app',
+    link: 'https://code-mentor-ai-update-y166.vercel.app/',
     aiHint: 'AI programming mentor'
   },
   {
@@ -72,7 +72,7 @@ export const projects: Project[] = [
   },
 ];
 
-export const projectCategories = [...new Set(projects.map(p => p.category))];
+export const projectCategories = ['All', ...[...new Set(projects.map(p => p.category))]];
 
 export const experiences: Experience[] = [
     {
