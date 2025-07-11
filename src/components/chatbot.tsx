@@ -48,7 +48,7 @@ export default function Chatbot() {
 
             try {
                 const stream = await chatStream({ message: input });
-                for await (const chunk of stream) {
+                for await (const chunk of await stream.text()) {
                     setMessages(prev => {
                         const lastMessage = prev[prev.length - 1];
                         if (lastMessage.sender === 'bot') {
