@@ -26,7 +26,7 @@ export async function chat(input: ChatInput): Promise<ChatOutput> {
 }
 
 export async function chatStream(input: ChatInput) {
-  const { stream } = await ai.generateStream({
+  const { stream } = ai.generateStream({
     prompt: `${portfolioContext}
 
 ---
@@ -41,8 +41,10 @@ Your answer:`,
   const encoder = new TextEncoder();
   const readableStream = new ReadableStream({
     async start(controller) {
-      for await (const chunk of stream.text) {
-        controller.enqueue(encoder.encode(chunk));
+      for await (const chunk of stream) {
+        if (chunk.text) {
+          controller.enqueue(encoder.encode(chunk.text));
+        }
       }
       controller.close();
     },
