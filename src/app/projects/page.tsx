@@ -1,3 +1,4 @@
+'use client';
 import Projects from '@/components/projects';
 import { motion } from 'framer-motion';
 

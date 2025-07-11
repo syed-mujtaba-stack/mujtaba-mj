@@ -1,3 +1,4 @@
+'use client';
 import Certifications from '@/components/certifications';
 import { motion } from 'framer-motion';
 

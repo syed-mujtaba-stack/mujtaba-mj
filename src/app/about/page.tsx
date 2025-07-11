@@ -1,3 +1,4 @@
+'use client';
 import About from '@/components/about';
 import { motion } from 'framer-motion';
 

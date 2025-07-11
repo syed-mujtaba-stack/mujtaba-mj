@@ -1,3 +1,4 @@
+'use client';
 import Experience from '@/components/experience';
 import { motion } from 'framer-motion';
 

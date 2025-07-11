@@ -1,3 +1,4 @@
+'use client';
 import Contact from '@/components/contact';
 import { motion } from 'framer-motion';
 
