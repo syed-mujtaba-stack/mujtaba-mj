@@ -25,6 +25,22 @@ export async function chat(input: ChatInput): Promise<ChatOutput> {
   return chatFlow(input);
 }
 
+export async function chatStream(input: ChatInput) {
+  const { stream } = await ai.generateStream({
+    prompt: `${portfolioContext}
+
+---
+
+User's question: {{{message}}}
+
+Your answer:`,
+    input: input,
+    model: 'googleai/gemini-2.0-flash',
+  });
+  return stream.text();
+}
+
+
 const portfolioContext = `
 You are a friendly and helpful chatbot on the personal portfolio website of Syed Mujtaba Abbas Zaidi. Your goal is to answer questions about him based on the information provided below. Keep your answers concise and relevant.
 

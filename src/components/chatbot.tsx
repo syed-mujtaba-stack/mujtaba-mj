@@ -6,7 +6,7 @@ import { MessageSquare, Bot, Send, X, User, Loader2 } from 'lucide-react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from './ui/card';
 import { Input } from './ui/input';
 import { AnimatePresence, motion } from 'framer-motion';
-import { chat } from '@/ai/flows/chat-flow';
+import { chatStream } from '@/ai/flows/chat-flow';
 import { ScrollArea } from './ui/scroll-area';
 
 type Message = {
@@ -43,14 +43,35 @@ export default function Chatbot() {
             setInput('');
             setIsLoading(true);
 
+            // Add an empty bot message to update with the stream
+            setMessages(prev => [...prev, { sender: 'bot', text: '' }]);
+
             try {
-                const result = await chat({ message: input });
-                const botMessage: Message = { sender: 'bot', text: result.response };
-                setMessages(prev => [...prev, botMessage]);
+                const stream = await chatStream({ message: input });
+                for await (const chunk of stream) {
+                    setMessages(prev => {
+                        const lastMessage = prev[prev.length - 1];
+                        if (lastMessage.sender === 'bot') {
+                            return [
+                                ...prev.slice(0, -1),
+                                { ...lastMessage, text: lastMessage.text + chunk }
+                            ];
+                        }
+                        return prev;
+                    });
+                }
             } catch (error) {
                 console.error("Error fetching bot response:", error);
-                const errorMessage: Message = { sender: 'bot', text: "Sorry, I'm having trouble connecting. Please try again later." };
-                setMessages(prev => [...prev, errorMessage]);
+                setMessages(prev => {
+                    const lastMessage = prev[prev.length - 1];
+                    if (lastMessage.sender === 'bot') {
+                        return [
+                            ...prev.slice(0, -1),
+                            { ...lastMessage, text: "Sorry, I'm having trouble connecting. Please try again later." }
+                        ];
+                    }
+                    return prev;
+                });
             } finally {
                 setIsLoading(false);
             }
@@ -96,7 +117,7 @@ export default function Chatbot() {
                                                 {msg.sender === 'user' && <User className="w-6 h-6 text-muted-foreground flex-shrink-0" />}
                                             </div>
                                         ))}
-                                        {isLoading && (
+                                        {isLoading && messages[messages.length - 1]?.text === '' && (
                                             <div className="flex items-start gap-2">
                                                 <Bot className="w-6 h-6 text-primary flex-shrink-0" />
                                                 <div className="rounded-lg px-3 py-2 max-w-[80%] bg-secondary">
