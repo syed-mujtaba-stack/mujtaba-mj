@@ -1,6 +1,12 @@
 'use client';
 import Projects from '@/components/projects';
 import { motion } from 'framer-motion';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Projects',
+  description: 'Explore a selection of projects by Syed Mujtaba Abbas Zaidi, showcasing his skills in web development and AI integration.',
+};
 
 export default function ProjectsPage() {
   return (

@@ -1,6 +1,12 @@
 'use client';
 import Education from '@/components/education';
 import { motion } from 'framer-motion';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Education',
+  description: 'View the educational background and qualifications of Syed Mujtaba Abbas Zaidi.',
+};
 
 export default function EducationPage() {
   return (

@@ -1,6 +1,12 @@
 'use client';
 import Contact from '@/components/contact';
 import { motion } from 'framer-motion';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Contact',
+  description: 'Get in touch with Syed Mujtaba Abbas Zaidi for project collaborations, inquiries, or just to say hello.',
+};
 
 export default function ContactPage() {
   return (

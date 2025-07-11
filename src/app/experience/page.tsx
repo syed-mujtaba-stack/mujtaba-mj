@@ -1,6 +1,12 @@
 'use client';
 import Experience from '@/components/experience';
 import { motion } from 'framer-motion';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Experience',
+  description: 'Discover the professional experience of Syed Mujtaba Abbas Zaidi, including his roles, responsibilities, and achievements.',
+};
 
 export default function ExperiencePage() {
   return (

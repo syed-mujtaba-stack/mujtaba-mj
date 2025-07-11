@@ -1,6 +1,12 @@
 'use client';
 import Certifications from '@/components/certifications';
 import { motion } from 'framer-motion';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Certifications',
+  description: 'Browse the certifications earned by Syed Mujtaba Abbas Zaidi in web development, AI, and more.',
+};
 
 export default function CertificationsPage() {
   return (

@@ -1,6 +1,12 @@
 'use client';
 import About from '@/components/about';
 import { motion } from 'framer-motion';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'About',
+  description: 'Learn more about Syed Mujtaba Abbas Zaidi, his skills, career objectives, and what drives him as a developer.',
+};
 
 export default function AboutPage() {
   return (

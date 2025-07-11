@@ -13,9 +13,40 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://mujtaba-110.vercel.app';
+
 export const metadata: Metadata = {
-  title: 'Syed Mujtaba Abbas Zaidi | Full-Stack Developer',
-  description: 'Full-Stack Developer | AI Tools Builder | Creative Technologist',
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: 'Syed Mujtaba Abbas Zaidi | Full-Stack Developer',
+    template: `%s | Syed Mujtaba Abbas Zaidi`,
+  },
+  description: 'A self-driven Full-Stack Developer with a strong passion for building intelligent, scalable web apps and AI-powered tools.',
+  keywords: ['Full-Stack Developer', 'AI Tools', 'Next.js', 'React', 'TypeScript', 'Syed Mujtaba Abbas Zaidi', 'Portfolio'],
+  authors: [{ name: 'Syed Mujtaba Abbas Zaidi', url: siteUrl }],
+  creator: 'Syed Mujtaba Abbas Zaidi',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: siteUrl,
+    title: 'Syed Mujtaba Abbas Zaidi | Full-Stack Developer',
+    description: 'Explore the portfolio of Syed Mujtaba Abbas Zaidi, a creative technologist building modern web applications and AI tools.',
+    images: [
+      {
+        url: `${siteUrl}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Syed Mujtaba Abbas Zaidi Portfolio',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Syed Mujtaba Abbas Zaidi | Full-Stack Developer',
+    description: 'Explore the portfolio of Syed Mujtaba Abbas Zaidi, a creative technologist building modern web applications and AI tools.',
+    images: [`${siteUrl}/og-image.png`],
+    creator: '@syedmujtaba',
+  },
 };
 
 export default function RootLayout({
