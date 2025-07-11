@@ -14,7 +14,7 @@ export default function Projects() {
       : projects.filter((project) => project.category === activeFilter);
 
   return (
-    <section id="projects" className="w-full py-12 md:py-16">
+    <section id="projects" className="w-full">
       <div className="space-y-4 text-center">
         <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-primary">
           My Projects

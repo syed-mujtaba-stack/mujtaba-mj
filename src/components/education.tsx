@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function Education() {
   return (
-    <section id="education" className="w-full py-12 md:py-16">
+    <section id="education" className="w-full">
       <div className="space-y-4 text-center">
         <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-primary">
           Education

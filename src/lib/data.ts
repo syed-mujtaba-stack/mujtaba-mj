@@ -2,12 +2,12 @@ import { Code, Database, Bot, GitBranch, PenTool, BrainCircuit, Component, Palet
 import type { Project, Skill, NavLink, Experience, Education, Certification } from './types';
 
 export const navLinks: NavLink[] = [
-    { href: '#about', label: 'About' },
-    { href: '#projects', label: 'Projects' },
-    { href: '#experience', label: 'Experience' },
-    { href: '#education', label: 'Education' },
-    { href: '#certifications', label: 'Certifications' },
-    { href: '#contact', label: 'Contact' },
+    { href: '/', label: 'About' },
+    { href: '/projects', label: 'Projects' },
+    { href: '/experience', label: 'Experience' },
+    { href: '/education', label: 'Education' },
+    { href: '/certifications', label: 'Certifications' },
+    { href: '/contact', label: 'Contact' },
 ];
 
 export const skills: Skill[] = [
@@ -37,7 +37,7 @@ export const projects: Project[] = [
     image: 'https://placehold.co/600x400.png',
     tags: ['Next.js', 'React', 'OpenRouter API'],
     category: 'Web Development',
-    link: 'https://code-mentor-ai-update-y166.vercel.app/',
+    link: 'https://update-code-mentor-ai-2i5m.vercel.app/',
     aiHint: 'AI programming mentor'
   },
   {

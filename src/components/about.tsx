@@ -4,7 +4,7 @@ import { Phone, Mail, MapPin } from 'lucide-react';
 
 export default function About() {
   return (
-    <section id="about" className="w-full py-12 md:py-16">
+    <section id="about" className="w-full">
       <div className="grid gap-10 md:grid-cols-2">
         <div className="space-y-6">
           <div>
