@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from '@/components/ui/badge';
 import { Button } from './ui/button';
 import { ExternalLink } from 'lucide-react';
+import Link from 'next/link';
 
 type ProjectCardProps = {
   project: Project;
@@ -33,12 +34,14 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             <Badge key={tag} variant="secondary">{tag}</Badge>
           ))}
         </div>
-        <Button variant="outline" size="sm" asChild>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="mr-2 h-4 w-4" />
-                View Project
-            </a>
-        </Button>
+        {project.link && (
+          <Button variant="outline" size="sm" asChild>
+              <Link href={project.link} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="mr-2 h-4 w-4" />
+                  View Project
+              </Link>
+          </Button>
+        )}
       </CardFooter>
     </Card>
   );

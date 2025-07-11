@@ -1,78 +1,89 @@
-import { Codepen, Database, LayoutTemplate, PenTool, Smartphone, TerminalSquare } from 'lucide-react';
-import type { Project, Skill, NavLink } from './types';
+import { Code, Database, Bot, GitBranch, PenTool, BrainCircuit, Component, Palette, Languages, GraduationCap, Briefcase } from 'lucide-react';
+import type { Project, Skill, NavLink, Experience, Education } from './types';
 
 export const navLinks: NavLink[] = [
     { href: '#about', label: 'About' },
     { href: '#projects', label: 'Projects' },
+    { href: '#experience', label: 'Experience' },
+    { href: '#education', label: 'Education' },
     { href: '#contact', label: 'Contact' },
 ];
 
 export const skills: Skill[] = [
-  { name: 'React', icon: TerminalSquare },
-  { name: 'Next.js', icon: TerminalSquare },
-  { name: 'TypeScript', icon: TerminalSquare },
-  { name: 'Node.js', icon: Database },
-  { name: 'Tailwind CSS', icon: LayoutTemplate },
-  { name: 'Figma', icon: PenTool },
-  { name: 'Mobile Dev', icon: Smartphone },
-  { name: 'UI/UX', icon: Codepen },
+  { name: 'JavaScript', icon: Code },
+  { name: 'TypeScript', icon: Code },
+  { name: 'Python', icon: Code },
+  { name: 'React.js', icon: Component },
+  { name: 'Next.js', icon: Component },
+  { name: 'Tailwind CSS', icon: Palette },
+  { name: 'Express.js', icon: Code },
+  { name: 'Gemini API', icon: Bot },
+  { name: 'Langchain', icon: BrainCircuit },
+  { name: 'MongoDB', icon: Database },
+  { name: 'MySQL', icon: Database },
+  { name: 'Git', icon: GitBranch },
 ];
 
 export const projects: Project[] = [
   {
     id: 1,
-    title: 'E-Commerce Platform',
-    description: 'A full-featured e-commerce website with a modern UI, product filtering, and a secure checkout process.',
+    title: 'Code Mento AI',
+    description: 'AI-based programming mentor providing code help, debugging tips, and developer guidance.',
     image: 'https://placehold.co/600x400.png',
-    tags: ['Next.js', 'TypeScript', 'Stripe', 'Tailwind CSS'],
+    tags: ['Next.js', 'React', 'OpenRouter API'],
     category: 'Web Development',
-    aiHint: 'e-commerce website'
+    link: 'https://code-mentor-ai.vercel.app',
+    aiHint: 'AI programming mentor'
   },
   {
     id: 2,
-    title: 'Task Management App',
-    description: 'A collaborative task management application to help teams stay organized and productive.',
+    title: 'FastCV',
+    description: 'A sleek resume builder that helps users instantly generate and download resumes. Responsive design and fast performance.',
     image: 'https://placehold.co/600x400.png',
-    tags: ['React', 'Firebase', 'Material-UI'],
+    tags: ['HTML', 'CSS', 'JavaScript'],
     category: 'Web Development',
-    aiHint: 'task app'
+    link: 'https://fastcv-beta.vercel.app',
+    aiHint: 'resume builder app'
   },
   {
     id: 3,
-    title: 'Travel App UI/UX',
-    description: 'A complete UI/UX design for a mobile travel booking application, focusing on user experience.',
+    title: 'GemCode',
+    description: 'An AI coding assistant that supports real-time code suggestions and learning using Gemini AI integration.',
     image: 'https://placehold.co/600x400.png',
-    tags: ['Figma', 'User Research'],
-    category: 'UI/UX Design',
-    aiHint: 'travel app'
+    tags: ['Next.js', 'Gemini API'],
+    category: 'AI Tools',
+    link: 'https://gemcode.vercel.app',
+    aiHint: 'AI code assistant'
   },
   {
     id: 4,
-    title: 'Recipe Finder Mobile App',
-    description: 'A cross-platform mobile app to discover and save new recipes, built with React Native.',
+    title: 'Chat Buddy',
+    description: 'Modern conversational chatbot with multi-theme UI and developer-focused AI-powered Q&A using Gemini API.',
     image: 'https://placehold.co/600x400.png',
-    tags: ['React Native', 'Expo', 'API Integration'],
-    category: 'Mobile App',
-    aiHint: 'recipe app'
-  },
-  {
-    id: 5,
-    title: 'Personal Blog',
-    description: 'A static-generated blog built with Next.js and MDX for high performance and a great writing experience.',
-    image: 'https://placehold.co/600x400.png',
-    tags: ['Next.js', 'MDX', 'Tailwind CSS'],
-    category: 'Web Development',
-    aiHint: 'blog website'
-  },
-  {
-    id: 6,
-    title: 'Fitness Tracker Dashboard',
-    description: 'UI/UX design for a fitness tracker dashboard that visualizes user activity and progress.',
-    image: 'https://placehold.co/600x400.png',
-    tags: ['Figma', 'Data Visualization'],
-    category: 'UI/UX Design',
-    aiHint: 'fitness dashboard'
+    tags: ['Next.js', 'Gemini API'],
+    category: 'AI Tools',
+    link: 'https://chat-buddy-pearl.vercel.app',
+    aiHint: 'chatbot application'
   },
 ];
 
 export const projectCategories = [...new Set(projects.map(p => p.category))];
+
+export const experiences: Experience[] = [
+    {
+        company: 'Freelance Developer',
+        role: 'Full-Stack Developer',
+        period: '2023 – Present',
+        description: 'Developed custom client websites using Next.js and React. Integrated AI APIs and authentication systems. Delivered fast, responsive UIs with clean UX.',
+        icon: Briefcase,
+    }
+];
+
+export const education: Education[] = [
+    {
+        institution: 'Board of Intermediate Education, Karachi',
+        degree: 'Intermediate in Commerce',
+        period: 'Expected Graduation: 2025',
+        icon: GraduationCap,
+    }
+];

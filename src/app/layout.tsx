@@ -10,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Profolio | Personal Portfolio',
-  description: 'A modern, interactive portfolio to showcase personal projects and skills.',
+  title: 'Syed Mujtaba Abbas Zaidi | Full-Stack Developer',
+  description: 'Full-Stack Developer | AI Tools Builder | Creative Technologist',
 };
 
 export default function RootLayout({
