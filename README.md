@@ -1,5 +1,3 @@
-# Firebase Studio
+# Profolio
 
-This is a NextJS starter in Firebase Studio.
-
-To get started, take a look at src/app/page.tsx.
+A modern, interactive Portfolio Web App to showcase personal projects and skills.
