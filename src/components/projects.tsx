@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { projects, projectCategories } from '@/lib/data';
 import ProjectCard from './project-card';
 import { Button } from './ui/button';
@@ -12,7 +12,7 @@ export default function Projects() {
     ? projects
     : projects.filter((project) => project.category === activeFilter);
 
-  const categories = ['All', ...projectCategories];
+  const categories = useMemo(() => ['All', ...projectCategories], []);
 
   return (
     <section id="projects" className="w-full py-12 md:py-16">
