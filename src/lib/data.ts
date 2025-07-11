@@ -2,7 +2,8 @@ import { Code, Database, Bot, GitBranch, PenTool, BrainCircuit, Component, Palet
 import type { Project, Skill, NavLink, Experience, Education, Certification } from './types';
 
 export const navLinks: NavLink[] = [
-    { href: '/', label: 'About' },
+    { href: '/', label: 'Home' },
+    { href: '/about', label: 'About' },
     { href: '/projects', label: 'Projects' },
     { href: '/experience', label: 'Experience' },
     { href: '/education', label: 'Education' },
@@ -72,7 +73,7 @@ export const projects: Project[] = [
   },
 ];
 
-export const projectCategories = ['All', ...[...new Set(projects.map(p => p.category))]];
+export const projectCategories = ['All', 'Web Development', 'AI Tools'];
 
 export const experiences: Experience[] = [
     {
