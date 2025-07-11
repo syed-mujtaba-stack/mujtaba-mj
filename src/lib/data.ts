@@ -1,11 +1,12 @@
-import { Code, Database, Bot, GitBranch, PenTool, BrainCircuit, Component, Palette, Languages, GraduationCap, Briefcase } from 'lucide-react';
-import type { Project, Skill, NavLink, Experience, Education } from './types';
+import { Code, Database, Bot, GitBranch, PenTool, BrainCircuit, Component, Palette, Languages, GraduationCap, Briefcase, Award } from 'lucide-react';
+import type { Project, Skill, NavLink, Experience, Education, Certification } from './types';
 
 export const navLinks: NavLink[] = [
     { href: '#about', label: 'About' },
     { href: '#projects', label: 'Projects' },
     { href: '#experience', label: 'Experience' },
     { href: '#education', label: 'Education' },
+    { href: '#certifications', label: 'Certifications' },
     { href: '#contact', label: 'Contact' },
 ];
 
@@ -13,13 +14,17 @@ export const skills: Skill[] = [
   { name: 'JavaScript', icon: Code },
   { name: 'TypeScript', icon: Code },
   { name: 'Python', icon: Code },
+  { name: 'HTML', icon: Code },
+  { name: 'CSS', icon: Code },
   { name: 'React.js', icon: Component },
   { name: 'Next.js', icon: Component },
   { name: 'Tailwind CSS', icon: Palette },
   { name: 'Express.js', icon: Code },
+  { name: 'OpenRouter API', icon: Bot },
   { name: 'Gemini API', icon: Bot },
   { name: 'Langchain', icon: BrainCircuit },
   { name: 'MongoDB', icon: Database },
+  { name: 'Sanity.io', icon: Database },
   { name: 'MySQL', icon: Database },
   { name: 'Git', icon: GitBranch },
 ];
@@ -86,4 +91,15 @@ export const education: Education[] = [
         period: 'Expected Graduation: 2025',
         icon: GraduationCap,
     }
+];
+
+export const certifications: Certification[] = [
+    { name: 'Full Stack Web Development', issuer: 'GIAIC', icon: Award },
+    { name: 'JavaScript & React Mastery', issuer: 'GIAIC', icon: Award },
+    { name: 'OpenRouter API Integration', issuer: 'Self Projects', icon: Award },
+];
+
+export const languages: Skill[] = [
+    { name: 'English (Professional)', icon: Languages },
+    { name: 'Urdu (Native)', icon: Languages },
 ];

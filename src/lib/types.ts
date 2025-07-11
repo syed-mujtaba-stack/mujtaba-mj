@@ -35,3 +35,9 @@ export type Education = {
     period: string;
     icon: LucideIcon;
 };
+
+export type Certification = {
+  name: string;
+  issuer: string;
+  icon: LucideIcon;
+}
