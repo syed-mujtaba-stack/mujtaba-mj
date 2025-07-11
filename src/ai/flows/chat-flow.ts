@@ -37,7 +37,8 @@ Your answer:`,
     input: input,
     model: 'googleai/gemini-2.0-flash',
   });
-  return stream;
+  
+  return await stream.text();
 }
 
 
