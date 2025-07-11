@@ -43,12 +43,19 @@ export default function Chatbot() {
             setInput('');
             setIsLoading(true);
 
-            // Add an empty bot message to update with the stream
             setMessages(prev => [...prev, { sender: 'bot', text: '' }]);
 
             try {
                 const stream = await chatStream({ message: input });
-                for await (const chunk of stream) {
+                const reader = stream.getReader();
+                const decoder = new TextDecoder();
+                
+                let done = false;
+                while (!done) {
+                    const { value, done: readerDone } = await reader.read();
+                    done = readerDone;
+                    const chunk = decoder.decode(value, { stream: true });
+                    
                     setMessages(prev => {
                         const lastMessage = prev[prev.length - 1];
                         if (lastMessage.sender === 'bot') {

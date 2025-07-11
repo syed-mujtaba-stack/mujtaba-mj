@@ -38,7 +38,17 @@ Your answer:`,
     model: 'googleai/gemini-2.0-flash',
   });
 
-  return stream.text;
+  const encoder = new TextEncoder();
+  const readableStream = new ReadableStream({
+    async start(controller) {
+      for await (const chunk of stream.text) {
+        controller.enqueue(encoder.encode(chunk));
+      }
+      controller.close();
+    },
+  });
+
+  return readableStream;
 }
 
 
