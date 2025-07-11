@@ -1,7 +1,7 @@
 import { navLinks } from '@/lib/data';
 import Link from 'next/link';
 import { ThemeToggle } from './theme-toggle';
-import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
 import { Button } from './ui/button';
 import { Menu } from 'lucide-react';
 
@@ -41,6 +41,9 @@ export default function Header() {
                     </Button>
                 </SheetTrigger>
                 <SheetContent side="right">
+                    <SheetHeader>
+                        <SheetTitle className="sr-only">Menu</SheetTitle>
+                    </SheetHeader>
                     <Link href="/" className="mr-6 flex items-center space-x-2 mb-6">
                          <span className="font-headline text-lg font-bold text-primary">SYED MUJTABA ABBAS ZAIDI</span>
                     </Link>
