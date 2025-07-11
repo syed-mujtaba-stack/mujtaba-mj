@@ -19,6 +19,7 @@ export type Skill = {
 export type NavLink = {
   href: string;
   label: string;
+  icon: LucideIcon;
 };
 
 export type Experience = {

@@ -1,14 +1,15 @@
-import { Code, Database, Bot, GitBranch, PenTool, BrainCircuit, Component, Palette, Languages, GraduationCap, Briefcase, Award } from 'lucide-react';
-import type { Project, Skill, NavLink, Experience, Education, Certification } from './types';
+import { Code, Database, Bot, GitBranch, PenTool, BrainCircuit, Component, Palette, Languages, GraduationCap, Briefcase, Award, Home, User, FolderGit2, BookUser, AwardIcon, MessageSquare, FileText } from 'lucide-react';
+import type { NavLink, Project, Skill, Experience, Education, Certification } from './types';
 
 export const navLinks: NavLink[] = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
-    { href: '/projects', label: 'Projects' },
-    { href: '/experience', label: 'Experience' },
-    { href: '/education', label: 'Education' },
-    { href: '/certifications', label: 'Certifications' },
-    { href: '/contact', label: 'Contact' },
+    { href: '/', label: 'Home', icon: Home },
+    { href: '/about', label: 'About', icon: User },
+    { href: '/projects', label: 'Projects', icon: FolderGit2 },
+    { href: '/experience', label: 'Experience', icon: Briefcase },
+    { href: '/education', label: 'Education', icon: GraduationCap },
+    { href: '/certifications', label: 'Certifications', icon: AwardIcon },
+    { href: '/resume', label: 'Resume', icon: FileText },
+    { href: '/contact', label: 'Contact', icon: MessageSquare },
 ];
 
 export const skills: Skill[] = [
