@@ -26,7 +26,7 @@ export async function chat(input: ChatInput): Promise<ChatOutput> {
 }
 
 export async function chatStream(input: ChatInput) {
-  const { stream } = await ai.generateStream({
+  const { stream } = ai.generateStream({
     prompt: `${portfolioContext}
 
 ---
@@ -37,7 +37,7 @@ Your answer:`,
     input: input,
     model: 'googleai/gemini-2.0-flash',
   });
-  return stream.text();
+  return stream.text;
 }
 
 
