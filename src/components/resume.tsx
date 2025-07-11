@@ -109,10 +109,12 @@ export default function Resume() {
                 <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl/relaxed">
                     Preview your resume below. You can download it as a PDF.
                 </p>
-                <Button onClick={handlePrint}>
-                    <Download className="mr-2" />
-                    Download PDF
-                </Button>
+                <div style={{ display: 'inline-block' }}>
+                    <Button onClick={handlePrint}>
+                        <Download className="mr-2" />
+                        Download PDF
+                    </Button>
+                </div>
             </div>
 
             <div className="mt-12 border rounded-lg shadow-lg max-w-4xl mx-auto">
