@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -21,8 +21,17 @@ export const metadata: Metadata = {
     default: 'Syed Mujtaba Abbas Zaidi | Full-Stack Developer',
     template: `%s | Syed Mujtaba Abbas Zaidi`,
   },
-  description: 'A self-driven Full-Stack Developer with a strong passion for building intelligent, scalable web apps and AI-powered tools.',
-  keywords: ['Full-Stack Developer', 'AI Tools', 'Next.js', 'React', 'TypeScript', 'Syed Mujtaba Abbas Zaidi', 'Portfolio'],
+  description:
+    'A self-driven Full-Stack Developer with a strong passion for building intelligent, scalable web apps and AI-powered tools.',
+  keywords: [
+    'Full-Stack Developer',
+    'AI Tools',
+    'Next.js',
+    'React',
+    'TypeScript',
+    'Syed Mujtaba Abbas Zaidi',
+    'Portfolio',
+  ],
   authors: [{ name: 'Syed Mujtaba Abbas Zaidi', url: siteUrl }],
   creator: 'Syed Mujtaba Abbas Zaidi',
   openGraph: {
@@ -30,7 +39,8 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: siteUrl,
     title: 'Syed Mujtaba Abbas Zaidi | Full-Stack Developer',
-    description: 'Explore the portfolio of Syed Mujtaba Abbas Zaidi, a creative technologist building modern web applications and AI tools.',
+    description:
+      'Explore the portfolio of Syed Mujtaba Abbas Zaidi, a creative technologist building modern web applications and AI tools.',
     images: [
       {
         url: `${siteUrl}/og-image.png`,
@@ -43,7 +53,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Syed Mujtaba Abbas Zaidi | Full-Stack Developer',
-    description: 'Explore the portfolio of Syed Mujtaba Abbas Zaidi, a creative technologist building modern web applications and AI tools.',
+    description:
+      'Explore the portfolio of Syed Mujtaba Abbas Zaidi, a creative technologist building modern web applications and AI tools.',
     images: [`${siteUrl}/og-image.png`],
     creator: '@syedmujtaba',
   },
@@ -59,9 +70,17 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+          rel="stylesheet"
+        />
+        {/* Favicon */}
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <body className={cn('font-body antialiased flex flex-col min-h-dvh bg-background')}>
+      <body className={cn('font-body antialiased flex flex-col min-h-dvh bg-background', inter.variable)}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -69,9 +88,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className="flex-1">
-            {children}
-          </main>
+          <main className="flex-1">{children}</main>
           <Footer />
           <Toaster />
           <Chatbot />
