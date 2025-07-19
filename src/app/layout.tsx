@@ -73,10 +73,7 @@ export default function RootLayout({
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap"
           rel="stylesheet"
-        />
-
-          <meta name="google-site-verification" content="1fO9SPiqvxF11Mi7u2hIHqTyXyghUVqj6xjCx0svCqM" />
-        
+        />        
         {/* Favicon */}
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
